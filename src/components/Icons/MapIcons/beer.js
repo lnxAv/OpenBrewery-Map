@@ -1,5 +1,5 @@
 //import beer_ico from './beer.png';
-//import beer_shadow_ico from '.public/beer_shadow.png';
+//import beer_shadow_ico from './beer_shadow.png';
 import L from 'leaflet';
 
 

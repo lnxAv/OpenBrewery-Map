@@ -30,7 +30,7 @@ export const DropdownSearchStyle = style.div`
         color: ${cc.c_textPrimary};
     }
   
-    #myInput{
+    input[type="text"]{
         box-sizing: border-box;
         background-image: url('searchicon.png');
         background-position: 14px 12px;
@@ -42,7 +42,7 @@ export const DropdownSearchStyle = style.div`
         border-bottom: 1px solid #ddd;
     }
   
-    #myInput:focus {outline: 3px solid #ddd;}
+    input[type="text"]:focus {outline: 3px solid #ddd;}
   
     .dropdown {
         position: relative;
@@ -74,6 +74,12 @@ export const DropdownSearchStyle = style.div`
         border: none;
         outline: none;
         shadow-box: none;
+        &.alt{
+            color: ${cc.c_textAlt};
+            svg{
+                color: ${cc.c_textAlt};
+            }
+        }
     }
     button.none{display: none;}
     button.selected{backgrond-color: grey}

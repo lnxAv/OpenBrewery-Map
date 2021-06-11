@@ -27,33 +27,33 @@ Finally, I drew a hierarchy of how I wanted things to work and with some pseudo-
 
 ## Documentation
 I used my own commenting and was made like so (I did notice that # is confused by ! sometime):
-//! functions
-//# comments
-//? links & reference
-//!!! important
+//! functions  
+//# comments  
+//? links & reference  
+//!!! important  
 
 
 ## Changes & Missing things
-*** the changes to do ***
-- [] Change the size of the Map panel to be bigger & dynamic
-- [] Change display of address, phone number & link
-- [] Try to get the favicon of URL's and display it
+**the changes to do**
+- [ ] Change the size of the Map panel to be bigger & dynamic
+- [ ] Change display of address, phone number & link
+- [ ] Try to get the favicon of URL's and display it
 
 - Add a more filter options:
   - [X] A drop down with states to model after [this](https://inkplant.com/code/state-latitudes-longitudes)
-  - [] A "More options" to add future extra filters
+  - [ ] A "More options" to add future extra filters
 
 - []Geolocations with a dragable pin -> Based on issue [Issue #70](https://github.com/openbrewerydb/openbrewerydb-rails-api/issues/70#issue-912366562)
 - 🦔 Keep track of other OpenBreweryDb changes and try to reflect them 
 
 ## Ressources
 Map:
-[events - ](https://react-leaflet.js.org/docs/example-events)
-[panning animate -](https://react-leaflet.js.org/docs/example-animated-panning)
-[external state check -](https://react-leaflet.js.org/docs/example-external-state)
-[Child behavior -](https://react-leaflet.js.org/docs/api-components/#evented-behavior)
-[Custon Icons -](https://leafletjs.com/examples/custom-icons/) + react-leaflet
-Open Brewery Discord
+[events - ](https://react-leaflet.js.org/docs/example-events)  
+[panning animate -](https://react-leaflet.js.org/docs/example-animated-panning)  
+[external state check -](https://react-leaflet.js.org/docs/example-external-state)  
+[Child behavior -](https://react-leaflet.js.org/docs/api-components/#evented-behavior)  
+[Custon Icons -](https://leafletjs.com/examples/custom-icons/) + react-leaflet  
+Open Brewery Discord  
 
 
 ## Issues and solution found

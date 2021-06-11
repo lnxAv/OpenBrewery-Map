@@ -23,10 +23,10 @@ This decision was made because the MapBox API (v1) and Google Map Javascript wer
 the one downside to note however is that leaflet is not SSR-able,
 Once those two were chosen I settled for [Styled-Components](https://styled-components.com/showcase) since I like the rapidity and already owned some snippets,
 
-Finally, I drew a hierarchy of how I wanted things to work and with some pseudo-code and stayed true to it.
+Finally, I drew a hierarchy of how I wanted things to work, thus with some quick pseudo-code I stayed true to it.
 
 ## Documentation
-I used my own commenting and was made like so (I did notice that # is confused by ! sometime):
+My own commenting was made like so (I did notice that # is confused by ! sometime):  
 //! functions  
 //# comments  
 //? links & reference  

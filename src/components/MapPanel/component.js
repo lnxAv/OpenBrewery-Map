@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { createBreweriesFitler, typeChoices } from '../../middleware/utils';
+import { createBreweriesFitler, stateChoices, typeChoices } from '../../middleware/utils';
 import { Card } from '../Card/component';
 import { DropdownSearch } from '../DropdownSearch/component';
 import { Searchbar } from '../Searchbar/component';
@@ -9,7 +9,6 @@ import { Chevron } from '../Icons/chevron';
 
 const _delayedTime = 200
 export const MapPanel = (props) => {
-    const [isCollapsed, setIsCollapsed] = useState(false)
     const [isReady, setIsReady] = useState(false)
     const [delayedTimeout, setDelayedTimeout] = useState(true);
 
@@ -20,12 +19,15 @@ export const MapPanel = (props) => {
     }, [isReady])
     //! toggle's on and off the panel
     const togglePanel = () =>{
-        setIsCollapsed(!isCollapsed)
+        try {
+            props.alterIsPanelCollapsed(!props.isPanelCollapsed)
+        } catch (error) {
+        }
     }
     //! Set back the iReady to true after x Amount of time
     const launchDelayedTimeout = () => {
         const timeout = setTimeout(() => {
-            setIsReady(true)
+                setIsReady(true)
         },  _delayedTime)
         setDelayedTimeout(timeout)
     }
@@ -68,16 +70,26 @@ export const MapPanel = (props) => {
     //! Handle various filter modifiers
     const handleTypeSelection = (selection) =>{
         let filter = {...props.filter}
-        filter.by_type = selection
+        filter.by_type = selection || undefined
         filter.page = 1
         try {
             props.alterFilter(filter)
         } catch (error) {
         }
     }
+    const handleStateSelection = (selection) =>{
+        let filter = {...props.filter}
+        filter.by_state = selection?.state || undefined
+        filter.page = 1
+        try {
+            props.alterFilter(filter)
+            props.flyTo([selection.latitude, selection.longitude])
+        } catch (error) {
+        }
+    }
     const handleFilterSelection = (selection) => {
         let filter = createBreweriesFitler(15)
-        filter.by_name = selection.name
+        filter.by_name = selection.name || undefined
         filter.page = 1
         try {
             props.alterFilter(filter)
@@ -87,7 +99,7 @@ export const MapPanel = (props) => {
     }
 
     return (
-        <MapPanelStyle className={`${isCollapsed? 'collapse' : 'open'} ${props.focusBrewer? 'focus' : ''}`}>
+        <MapPanelStyle className={`${props.isPanelCollapsed? 'collapse' : 'open'} ${props.focusBrewer? 'focus' : ''}`}>
             <div className='collapsible'>
                 <div className='menubar'>
                     <div className='top-dressing' />
@@ -110,15 +122,18 @@ export const MapPanel = (props) => {
                         </div>
                         <div className='filter-control-bottom'>
                             <div className='filter-dropdown'>
-                                <DropdownSearch data={typeChoices()} value={props.filter.by_type} selectionType='item' onSelection={handleTypeSelection}/>
+                                <DropdownSearch data={typeChoices()} value={props.filter.by_type} undefinedSelection='- By types -' selectionType='item' onSelection={handleTypeSelection}/> 
+                            </div>
+                            <div className='filter-dropdown'>
+                                <DropdownSearch data={stateChoices()} undefinedSelection='- By states -' value={props.filter.by_state} selectionType='state' returnAll={true} onSelection={handleStateSelection}/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className='divider'></div>
                 <div className='card-container'>
-                    {props.data && isReady && !props.isRevalidating?
-                        props.data.map( (brewer)=> {
+                    {isReady && !props.isRevalidating?
+                        props.data?.map( (brewer)=> {
                             if(brewer.longitude != null && brewer.latitude != null){
                                 return(
                                     <Card 
@@ -134,22 +149,31 @@ export const MapPanel = (props) => {
                         //While isn't ready or is revalidating put a loading panel
                         <LoadingPanel />
                     }
-                </div>
-                <div className='pagination'>
-                    <div className='pagination-control'>
-                        <button onClick={prevPage}>
-                            prev
-                        </button>
+                    {//When empty and not revalidating
+                        (Array.isArray(props.data) && !props.data.length) && !props.isRevalidating || !isReady?
+                            <div className='container-empty'>
+                                <div>
+                                    <span>Sorry, no result was found</span>
+                                </div>
+                            </div>
+                        : //or paginate
+                        <div className='pagination'>
+                        <div className='pagination-control'>
+                            <button onClick={prevPage}>
+                                prev
+                            </button>
+                        </div>
+                        <div className='pagination-control'>
+                            <button onClick={nextPage}>
+                                next
+                            </button>
+                        </div>
                     </div>
-                    <div className='pagination-control'>
-                        <button onClick={nextPage}>
-                            next
-                        </button>
-                    </div>
+                    }
                 </div>
             </div>
-            <div className={`collapsible-controls ${(props.focusBrewer || props.hoverBrewer) && isCollapsed? 'glow' : ''}`}>
-                <button onClick={togglePanel}> <span><Chevron revert={isCollapsed} /></span></button>
+            <div className={`collapsible-controls ${(props.focusBrewer || props.hoverBrewer) && props.isPanelCollapsed? 'glow' : ''}`}>
+                <button onClick={togglePanel}> <span><Chevron revert={props.isPanelCollapsed} /></span></button>
             </div>
         </MapPanelStyle>
     )

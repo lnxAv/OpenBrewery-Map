@@ -19,6 +19,23 @@ const animatedBackground = keyframes`
         background-position: 0% 50%;
     }
 `
+
+const slideIn = keyframes`
+    0% {
+        opacity:0;
+    }
+    20%{
+        opacity: 0.3;
+    }
+    50% {
+    }
+    90%{
+        opacity:1;
+    }
+    100% {
+    }
+`
+
 export const MapPanelStyle = style.div`
     display: flex;
     flex-direction: row;
@@ -117,6 +134,22 @@ export const MapPanelStyle = style.div`
                         padding: 10px;
                     }
                 }
+                div.filter-control-bottom{
+                    div.filter-dropdown{
+                        margin: 5px;
+                    }
+                }
+            }
+        }
+        div.card-container{
+            div.container-empty{
+                margin-top: 25px;
+                margin-bottom: 25px;
+                text-align: center;
+                font-family: ${font.main};
+                font-size: 2em;
+                color: ${cc.c_textPrimary};
+                animation: ${slideIn} 2s ease 1;
             }
         }
         div.pagination{
@@ -126,6 +159,7 @@ export const MapPanelStyle = style.div`
             justify-content: center;
             padding-botton: 10px;
             bottom: 0;
+            animation: ${slideIn} 2s ease 1
             div.pagination-control{
                 button{
                     font-family: ${font.main};
@@ -177,6 +211,7 @@ export const LoadingPanelStlye = style.div`
         width: 100%;
         height: 100%;
         background: linear-gradient(-45deg, ${cc.c_white}, ${cc.c_whiteShadow}, ${cc.c_primaryLight}, ${cc.c_primary});
+        background-size: 400% 400%;
         background-size: 400% 400%;
         animation: ${animatedBackground} 10s ease infinite;
     }

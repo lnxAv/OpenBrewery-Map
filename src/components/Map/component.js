@@ -3,6 +3,7 @@ import { MapStyle } from './style';
 import { MapContainer, TileLayer,ZoomControl} from 'react-leaflet'
 import { MapMarker } from '../MapMarker/component';
 import { BeerIcon,BigBeerIcon } from '../Icons/MapIcons/beer';
+import { _defaultZoom } from '../../middleware/val';
 
 export const Map = (props) => {
     useEffect(() => {
@@ -14,7 +15,7 @@ export const Map = (props) => {
             <div className='map-container'>
                 <MapContainer 
                 style={{ height: '100%', width: '100%' }} 
-                center={[40.71427, -74.00597]} zoom={3} zoomControl={false}
+                center={[40.71427, -74.00597]} zoom={_defaultZoom} zoomControl={false}
                 whenCreated={props.alterMapController}
                 >
                     <TileLayer
@@ -29,7 +30,7 @@ export const Map = (props) => {
                                     key={brewer.id} brewerId={brewer.id} 
                                     icon={(brewer.id === props.focusBrewer) || (brewer.id === props.hoverBrewer)? BigBeerIcon : BeerIcon} 
                                     position={[brewer.latitude, brewer.longitude]} 
-                                    alterFocusBrewer={props.alterFocusBrewer} alterHoverBrewer={props.alterHoverBrewer}
+                                    alterFocusBrewer={props.alterFocusBrewer} alterHoverBrewer={props.alterHoverBrewer} alterPanelCollapse={props.alterPanelCollapse}
                                 />
                             )
                         }

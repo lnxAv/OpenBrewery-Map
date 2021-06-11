@@ -20,6 +20,10 @@ const craftUrl = (...args) => {
                 extension = extension? extension+'&' : '?'
                 extension+=`by_dist=${breweriesFilter.by_dist}`
             }
+            if(breweriesFilter.by_state){
+                extension = extension? extension+'&' : '?'
+                extension+=`by_state=${breweriesFilter.by_state}`
+            }
             if(breweriesFilter.by_type){
                 extension = extension? extension+'&' : '?'
                 extension+=`by_type=${breweriesFilter.by_type}`

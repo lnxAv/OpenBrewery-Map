@@ -14,6 +14,7 @@ export const MapMarker = (props) => {
                         click: () => {
                             try {
                                 props.alterFocusBrewer(props.brewerId, props.position)
+                                props.alterPanelCollapse(false)
                             } catch (e) {
                             }
                         },

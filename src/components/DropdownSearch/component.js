@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import { EraserIco } from '../Icons/Eraser'
 import { DropdownSearchStyle } from './style'
 
 const _defaultUndefinedSelection = '- select -'
@@ -26,10 +27,11 @@ export const DropdownSearch = (props) => {
         return false
     }
     //! Callback to trigger a selection
-    const onSelection = (selection) => {
+    const onSelection = (selection, returnAllValue=null) => {
         setSelection(selection)
         try {
-            props.onSelection(selection)
+            const returnValue = props.returnAll && returnAllValue? returnAllValue : selection
+            props.onSelection(returnValue)
         } catch (error) {
         }
     }
@@ -37,16 +39,15 @@ export const DropdownSearch = (props) => {
         <DropdownSearchStyle>
             <button className={`dropbtn ${selection? 'selected' : ''}`}> <span>{selection? selection : props.undefinedSelection || _defaultUndefinedSelection}</span> </button>
             <div className={`dropdown-content ${isActive? 'show' : ''}`} >
-                <input 
-                    id="myInput" 
+                <input
                     type="text" placeholder="Search.." autoComplete="off"
                     value={searchInput} onChange={handleTyping}
                     onFocus={() => {setIsActive(true)}} onBlur={() => {setIsActive(false)}}
                 />
                 {selection?
-                    <button onClick={() => {onSelection(undefined)}}>
+                    <button className='alt' onClick={() => {onSelection(undefined)}}>
                         <span>
-                            {props.undefinedSelection? props.undefinedSelection : _defaultUndefinedSelection}
+                            - Reset <EraserIco /> -
                         </span>
                     </button>
                 : //or
@@ -55,12 +56,13 @@ export const DropdownSearch = (props) => {
                 {props.data?.map((value) =>{
                         try {
                             const _id = value?.[props.selectionType] || ''
-                            if(!_id){
+                            const _returnAllValue = props.returnAll? value : null
+                            if(!_id || _id === props.value){
                                 return null
                             }
                             return(
-                                <button 
-                                    key={_id} onClick={() => {onSelection(_id)}}
+                                <button
+                                    key={_id} onClick={() => {onSelection(_id, _returnAllValue)}}
                                     className={`${checkMatch(_id, searchInput)? '' : 'none'} ${selection === _id? 'selected' : ''}`}
                                 >
                                     {_id}

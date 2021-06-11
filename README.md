@@ -16,10 +16,10 @@ I set myself on a short course to know more about them.
 
 ## The approach
 
-My first step was to find the best tools and know more about the Open Brewery DB,
-I have decided to settle with SWR as a good middleware to handle the API,
-Has for the map I settled with [leaflet](https://leafletjs.com/) and [react-leaflet](https://react-leaflet.js.org/),
-This decision was made because the MapBox API (v1) and Google Map Javascript were unnecessarily complicated and didn't offer the level of freedom I was looking for, 
+My first step was to find the best tools and know more about the Open Brewery DB,  
+I have decided to settle with SWR as a good middleware to handle the API,  
+Has for the map I settled with [leaflet](https://leafletjs.com/) and [react-leaflet](https://react-leaflet.js.org/),  
+This decision was made because the MapBox API (v1) and Google Map Javascript were unnecessarily complicated and didn't offer the level of freedom I was looking for,  
 the one downside to note however is that leaflet is not SSR-able,
 Once those two were chosen I settled for [Styled-Components](https://styled-components.com/showcase) since I like the rapidity and already owned some snippets,
 

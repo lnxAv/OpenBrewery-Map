@@ -1,5 +1,6 @@
 {
   "name": "openbrewery-map",
+  "homepage": "http://lnxAv.github.io/OpenBrewery-Map",
   "version": "0.0.1",
   "private": true,
   "description": "Server's a map under the openBreweryDB api's, created during a Osedea challenge",
@@ -8,7 +9,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "format": "prettier --write 'src/**/*.js' && eslint --fix 'src/**/*.js'"
+    "format": "prettier --write 'src/**/*.js' && eslint --fix 'src/**/*.js'",
+    "deploy": "gh-pages -d build",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "leaflet": "^1.7.1",

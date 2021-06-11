@@ -45,7 +45,7 @@ My own commenting was made like so (I did notice that # is confused by ! sometim
   - [X] A drop down with states to model after [this](https://inkplant.com/code/state-latitudes-longitudes)
   - [ ] A "More options" to add future extra filters
 
-- []Geolocations with a dragable pin -> Based on issue [Issue #70](https://github.com/openbrewerydb/openbrewerydb-rails-api/issues/70#issue-912366562)
+- [ ]Geolocations with a dragable pin -> Based on issue [Issue #70](https://github.com/openbrewerydb/openbrewerydb-rails-api/issues/70#issue-912366562)
 - 🦔 Keep track of other OpenBreweryDb changes and try to reflect them 
 
 ## Ressources

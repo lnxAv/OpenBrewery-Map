@@ -40,12 +40,12 @@ My own commenting was made like so (I did notice that # is confused by ! sometim
 - [ ] Change the size of the Map panel to be bigger & dynamic
 - [ ] Change display of address, phone number & link
 - [ ] Try to get the favicon of URL's and display it
+- [ ]Geolocations with a dragable pin -> Based on issue [Issue #70](https://github.com/openbrewerydb/openbrewerydb-rails-api/issues/70#issue-912366562)
 
 - Add a more filter options:
   - [X] A drop down with states to model after [this](https://inkplant.com/code/state-latitudes-longitudes)
   - [ ] A "More options" to add future extra filters
 
-- [ ]Geolocations with a dragable pin -> Based on issue [Issue #70](https://github.com/openbrewerydb/openbrewerydb-rails-api/issues/70#issue-912366562)
 - 🦔 Keep track of other OpenBreweryDb changes and try to reflect them 
 
 ## Ressources

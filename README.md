@@ -27,14 +27,16 @@ Finally, I drew a hierarchy of how I wanted things to work, thus with some quick
 
 ## Documentation
 My own commenting was made like so (I did notice that # is confused by ! sometime):  
+```javascript
 //! functions  
 //# comments  
 //? links & reference  
 //!!! important  
-
+```
 
 ## Changes & Missing things
 **the changes to do**
+- [ ] Handle pagination by pre-fetching & testing with SWR mutate()
 - [ ] Change the size of the Map panel to be bigger & dynamic
 - [ ] Change display of address, phone number & link
 - [ ] Try to get the favicon of URL's and display it

@@ -1,0 +1,17 @@
+//! Data control
+
+//! Filter out if a value matches the chosen id
+
+//! Map & Panel Control
+
+//! Render's the map container
+
+//! Set back the iReady to true after x Amount of time
+
+//! toggle's on and off the panel
+
+//!!! Currently there is no way to set a max page amount
+
+//!!! to add
+
+//!render
